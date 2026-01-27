@@ -84,18 +84,22 @@ else
   NOTES="Applied using claude skill"
 fi
 
-# Build JSON payload
-JSON_PAYLOAD=$(cat <<EOF
-{
-  "name": "$NAME",
-  "email": "$EMAIL",
-  "linkedin": "$LINKEDIN",
-  "github": "$GITHUB",
-  "notes": "$NOTES",
-  "position": "Venture Capital Associate",
-  "source": "Claude Skill"
-}
-EOF
+# Build JSON payload using jq to properly escape values
+JSON_PAYLOAD=$(jq -n \
+  --arg name "$NAME" \
+  --arg email "$EMAIL" \
+  --arg linkedin "$LINKEDIN" \
+  --arg github "$GITHUB" \
+  --arg notes "$NOTES" \
+  '{
+    name: $name,
+    email: $email,
+    linkedin: $linkedin,
+    github: $github,
+    notes: $notes,
+    position: "Venture Capital Associate",
+    source: "Claude Skill"
+  }'
 )
 
 # Submit to Attio

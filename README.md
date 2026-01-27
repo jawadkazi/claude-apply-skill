@@ -4,19 +4,13 @@ Apply to Root Ventures positions directly through Claude CLI.
 
 ## Usage
 
-In Claude CLI, simply say:
+In Claude CLI, type the slash command:
 
 ```
-I want to apply to Root Ventures
+/root-ventures-apply
 ```
 
-or
-
-```
-Apply for the Root Ventures associate position
-```
-
-Claude will help you through the application process by collecting:
+Then provide your information. Claude will collect:
 - Your name (required)
 - Your email (required)
 - LinkedIn profile (optional)
@@ -31,14 +25,16 @@ Claude will help you through the application process by collecting:
 4. The skill submits your application directly to Attio
 5. You receive confirmation of submission
 
-## Example Conversation
+## Example Usage
 
 ```
-You: I'd like to apply to Root Ventures. My name is Jane Doe,
-     email is jane@example.com, GitHub is janedoe, and I'm
-     excited about deep tech investing because...
+You: /root-ventures-apply
 
-Claude: [Uses the skill to submit your application]
+Claude: Let me help you apply to Root Ventures. I'll need your name and email.
+
+You: Jane Doe, jane@example.com, GitHub is janedoe
+
+Claude: [Submits your application]
         ✅ Application submitted successfully!
 ```
 
