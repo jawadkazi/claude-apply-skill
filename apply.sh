@@ -75,6 +75,15 @@ if [[ -z "$NAME" ]] || [[ -z "$EMAIL" ]]; then
   exit 1
 fi
 
+# Append skill attribution to notes
+if [[ -n "$NOTES" ]]; then
+  NOTES="$NOTES
+
+Applied using claude skill"
+else
+  NOTES="Applied using claude skill"
+fi
+
 # Build JSON payload
 JSON_PAYLOAD=$(cat <<EOF
 {
