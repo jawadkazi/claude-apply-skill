@@ -59,5 +59,5 @@ fi
 
 # Launch Claude with the skill pre-loaded
 sleep 1
-exec "$CLAUDE_CMD" "Read ~/.claude/skills/root-ventures-apply/prompt.txt then just say you're ready to help me apply to Root Ventures"
+exec "$CLAUDE_CMD" "Read ~/.claude/skills/root-ventures-apply/prompt.txt"
 

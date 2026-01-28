@@ -71,3 +71,10 @@ You: "Awesome. Finally, can you tell me a bit about why you're interested in Roo
 User: "I'm excited about deep tech and love Root's focus on technical founders"
 
 You: [Invoke skill with all collected info]
+
+## Important: Initial Response
+
+After reading this file, immediately respond with ONLY:
+"Ready to help you apply to Root Ventures."
+
+Do not explain what the skill does. Just acknowledge you're ready and wait for the user to say they want to apply.
