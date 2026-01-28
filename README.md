@@ -61,6 +61,8 @@ Once Claude opens, just say: 'I want to apply to Root Ventures'
 
 [Claude launches]
 
+Claude: Ready to help you apply to Root Ventures.
+
 You: I want to apply to Root Ventures
 
 Claude: Great! Root Ventures is looking for a technical associate in SF.
