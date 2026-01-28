@@ -2,75 +2,63 @@
 
 Apply to Root Ventures positions directly through Claude CLI.
 
-## Usage
-
-After installation, simply run:
+## Installation
 
 ```bash
-apply-to-root
+curl -fsSL https://raw.githubusercontent.com/rootvc/claude-apply-skill/main/install.sh | bash
 ```
 
-The interactive application wizard will start and collect:
+## Usage
+
+After installation, open Claude CLI and paste this single line:
+
+```
+Read ~/.claude/skills/root-ventures-apply/prompt.txt then I want to apply
+```
+
+That's it! Claude will:
+- Load the application skill
+- Guide you through the application
+- Collect your information conversationally
+- Submit directly to Root Ventures
+
+## What You'll Provide
+
 - Your name (required)
 - Your email (required)
 - LinkedIn profile (optional)
 - GitHub username (optional)
-- Why Root? What makes you a great fit? (optional)
+- Why you're interested in Root (optional)
 
 ## How It Works
 
-1. You run `apply-to-root` in your terminal
-2. The interactive wizard guides you through the application
-3. You provide your name, email, LinkedIn, GitHub, and why you're interested
-4. Your application is submitted directly to Attio
-5. You receive immediate confirmation
+1. You paste the command in Claude CLI
+2. Claude reads the skill instructions
+3. Claude starts the conversational application process
+4. You provide your information naturally
+5. Claude submits your application to Attio
+6. You receive immediate confirmation
 
-## Example Usage
+## Example
 
-```bash
-$ apply-to-root
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         🚀 Root Ventures Application System
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Position: Venture Capital Associate
-Location: San Francisco
-
-Root Ventures is a deep tech seed fund that invests in
-bold engineers building the future.
-
-Let's get your application started!
-
-Your full name: Jane Doe
-Your email address: jane@example.com
-LinkedIn profile (optional): linkedin.com/in/janedoe
-GitHub username (optional): janedoe
-Why you're interested: I'm excited about deep tech
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Submitting your application...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ Application submitted successfully!
 ```
+You: Read ~/.claude/skills/root-ventures-apply/prompt.txt then I want to apply
 
-## Manual Usage
+Claude: Great! Root Ventures is looking for a technical associate in SF.
+        Let me collect some information. What's your name?
 
-You can also invoke the skill directly:
+You: Jane Doe
 
-```bash
-~/.claude/skills/root-ventures-apply/apply.sh \
-  --name "Your Name" \
-  --email "your@email.com" \
-  --linkedin "https://linkedin.com/in/yourprofile" \
-  --github "yourgithub" \
-  --notes "Why you're interested in Root"
+Claude: Thanks Jane! What's your email address?
+
+        [... continues conversationally ...]
+
+Claude: ✅ Application submitted successfully!
 ```
 
 ## Source Tracking
 
-Applications submitted through this skill are tagged with `source: "Claude Skill"` in Attio.
+Applications submitted through this skill are tagged with `source: "Claude Skill"` in Attio, and "Applied using claude skill" is added to your notes.
 
 ## Other Ways to Apply
 
