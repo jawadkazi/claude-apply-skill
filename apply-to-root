@@ -1,0 +1,73 @@
+#!/bin/bash
+# Root Ventures Application - Automated wrapper
+
+SKILL_DIR="$HOME/.claude/skills/root-ventures-apply"
+
+# Check if skill is installed
+if [ ! -f "$SKILL_DIR/apply.sh" ]; then
+  echo "❌ Root Ventures skill not found."
+  echo ""
+  echo "Install it first:"
+  echo "  curl -fsSL https://raw.githubusercontent.com/rootvc/claude-apply-skill/main/install.sh | bash"
+  exit 1
+fi
+
+# Display welcome message
+clear
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "         🚀 Root Ventures Application System"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "Position: Venture Capital Associate"
+echo "Location: San Francisco"
+echo ""
+echo "Root Ventures is a deep tech seed fund that invests in"
+echo "bold engineers building the future."
+echo ""
+echo "What we're looking for:"
+echo "  • Strong technical background"
+echo "  • Genuine curiosity about emerging technologies"
+echo "  • Excellent communication skills"
+echo "  • Hustle and resourcefulness"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# Collect information
+echo "Let's get your application started!"
+echo ""
+
+read -p "Your full name: " NAME
+while [[ -z "$NAME" ]]; do
+  echo "❌ Name is required"
+  read -p "Your full name: " NAME
+done
+
+read -p "Your email address: " EMAIL
+while [[ -z "$EMAIL" ]]; do
+  echo "❌ Email is required"
+  read -p "Your email address: " EMAIL
+done
+
+read -p "LinkedIn profile (optional, press Enter to skip): " LINKEDIN
+
+read -p "GitHub username (optional, press Enter to skip): " GITHUB
+
+echo ""
+echo "Finally, tell us why you're interested in Root Ventures:"
+read -p "> " NOTES
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Submitting your application..."
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# Build arguments
+ARGS="--name \"$NAME\" --email \"$EMAIL\""
+[[ -n "$LINKEDIN" ]] && ARGS="$ARGS --linkedin \"$LINKEDIN\""
+[[ -n "$GITHUB" ]] && ARGS="$ARGS --github \"$GITHUB\""
+[[ -n "$NOTES" ]] && ARGS="$ARGS --notes \"$NOTES\""
+
+# Submit application
+eval "$SKILL_DIR/apply.sh $ARGS"

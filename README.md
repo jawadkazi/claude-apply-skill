@@ -4,19 +4,13 @@ Apply to Root Ventures positions directly through Claude CLI.
 
 ## Usage
 
-In Claude CLI, follow these steps:
+After installation, simply run:
 
-**Step 1:** Load the skill by saying:
-```
-Read ~/.claude/skills/root-ventures-apply/prompt.txt
-```
-
-**Step 2:** Then say:
-```
-I want to apply to Root Ventures
+```bash
+apply-to-root
 ```
 
-Claude will help you through the application process by collecting:
+The interactive application wizard will start and collect:
 - Your name (required)
 - Your email (required)
 - LinkedIn profile (optional)
@@ -25,25 +19,40 @@ Claude will help you through the application process by collecting:
 
 ## How It Works
 
-1. You tell Claude you want to apply to Root Ventures
-2. Claude automatically detects this and begins collecting your information
-3. Claude asks for your name, email, LinkedIn, GitHub, and why you're interested
-4. Claude submits your application directly to Attio
+1. You run `apply-to-root` in your terminal
+2. The interactive wizard guides you through the application
+3. You provide your name, email, LinkedIn, GitHub, and why you're interested
+4. Your application is submitted directly to Attio
 5. You receive immediate confirmation
 
-## Example Conversation
+## Example Usage
 
-```
-You: I want to apply to Root Ventures
+```bash
+$ apply-to-root
 
-Claude: Great! Root Ventures is looking for a technical associate in SF.
-        What's your name and email?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         🚀 Root Ventures Application System
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-You: Jane Doe, jane@example.com, GitHub is janedoe,
-     I'm excited about deep tech investing
+Position: Venture Capital Associate
+Location: San Francisco
 
-Claude: [Submits your application]
-        ✅ Application submitted successfully!
+Root Ventures is a deep tech seed fund that invests in
+bold engineers building the future.
+
+Let's get your application started!
+
+Your full name: Jane Doe
+Your email address: jane@example.com
+LinkedIn profile (optional): linkedin.com/in/janedoe
+GitHub username (optional): janedoe
+Why you're interested: I'm excited about deep tech
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Submitting your application...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Application submitted successfully!
 ```
 
 ## Manual Usage
