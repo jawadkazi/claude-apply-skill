@@ -34,7 +34,18 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 
 # Check if Claude CLI is installed
-if ! command -v claude &> /dev/null; then
+# Try multiple ways to find claude (handles aliases, PATH, and direct installation)
+CLAUDE_CMD=""
+
+if command -v claude &> /dev/null; then
+  CLAUDE_CMD="claude"
+elif [ -f "$HOME/.claude/local/claude" ]; then
+  CLAUDE_CMD="$HOME/.claude/local/claude"
+elif [ -f "/usr/local/bin/claude" ]; then
+  CLAUDE_CMD="/usr/local/bin/claude"
+fi
+
+if [ -z "$CLAUDE_CMD" ]; then
   echo "⚠️  Claude CLI not found. Install it from: https://claude.ai/download"
   echo ""
   echo "After installing Claude CLI, run this to apply:"
@@ -45,5 +56,5 @@ fi
 
 # Launch Claude with the skill pre-loaded
 sleep 1
-exec claude "Read ~/.claude/skills/root-ventures-apply/prompt.txt then I want to apply"
+exec "$CLAUDE_CMD" "Read ~/.claude/skills/root-ventures-apply/prompt.txt then I want to apply"
 
