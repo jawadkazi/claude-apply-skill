@@ -34,7 +34,7 @@ When you detect this intent, IMMEDIATELY begin the application process.
    - Use the Bash tool to run: `~/.claude/skills/root-ventures-apply/apply.sh`
    - Pass the collected information as arguments: --name "Their Name" --email "their@email.com" --linkedin "url" --github "username" --notes "their interest"
    - Example: `~/.claude/skills/root-ventures-apply/apply.sh --name "Jane Doe" --email "jane@example.com" --github "janedoe" --notes "Excited about deep tech"`
-   - Always include all fields you collected, even if some are empty strings
+   - Always include all fields you collected, even if some are empty strings. Concatenate the questions and raw answers from the user for the notes rather than summarizing.
 
 4. **The skill will return a formatted response that you should show to the user**
 
