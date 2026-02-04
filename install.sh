@@ -54,57 +54,31 @@ if [ -z "$CLAUDE_CMD" ]; then
   echo "📦 Installing Claude CLI..."
   echo ""
 
-  # Detect OS
-  OS="$(uname -s)"
-  case "$OS" in
-    Darwin*)
-      # macOS installation
-      if ! command -v brew &> /dev/null; then
-        echo "❌ Homebrew not found. Please install Homebrew first:"
-        echo "   /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-        echo ""
-        echo "Or install Claude CLI manually from: https://claude.ai/download"
-        exit 1
+  # Install Claude CLI using official installer
+  echo "Installing Claude CLI..."
+  curl -fsSL https://claude.ai/install.sh | bash
+
+  # Add to PATH if not already there
+  if ! command -v claude &> /dev/null; then
+    export PATH="$HOME/.claude/local:$PATH"
+
+    # Add to shell profile
+    SHELL_PROFILE=""
+    if [ -f "$HOME/.zshrc" ]; then
+      SHELL_PROFILE="$HOME/.zshrc"
+    elif [ -f "$HOME/.bashrc" ]; then
+      SHELL_PROFILE="$HOME/.bashrc"
+    elif [ -f "$HOME/.bash_profile" ]; then
+      SHELL_PROFILE="$HOME/.bash_profile"
+    fi
+
+    if [ -n "$SHELL_PROFILE" ]; then
+      if ! grep -q "/.claude/local" "$SHELL_PROFILE"; then
+        echo 'export PATH="$HOME/.claude/local:$PATH"' >> "$SHELL_PROFILE"
+        echo "✅ Added Claude CLI to PATH in $SHELL_PROFILE"
       fi
-
-      echo "Installing Claude CLI via Homebrew..."
-      brew install claude
-      ;;
-
-    Linux*)
-      # Linux installation using curl installer
-      echo "Installing Claude CLI..."
-      curl -fsSL https://storage.googleapis.com/claude-cli/install.sh | sh
-
-      # Add to PATH if not already there
-      if ! command -v claude &> /dev/null; then
-        export PATH="$HOME/.claude/local:$PATH"
-
-        # Add to shell profile
-        SHELL_PROFILE=""
-        if [ -f "$HOME/.zshrc" ]; then
-          SHELL_PROFILE="$HOME/.zshrc"
-        elif [ -f "$HOME/.bashrc" ]; then
-          SHELL_PROFILE="$HOME/.bashrc"
-        elif [ -f "$HOME/.bash_profile" ]; then
-          SHELL_PROFILE="$HOME/.bash_profile"
-        fi
-
-        if [ -n "$SHELL_PROFILE" ]; then
-          if ! grep -q "/.claude/local" "$SHELL_PROFILE"; then
-            echo 'export PATH="$HOME/.claude/local:$PATH"' >> "$SHELL_PROFILE"
-            echo "✅ Added Claude CLI to PATH in $SHELL_PROFILE"
-          fi
-        fi
-      fi
-      ;;
-
-    *)
-      echo "❌ Unsupported operating system: $OS"
-      echo "Please install Claude CLI manually from: https://claude.ai/download"
-      exit 1
-      ;;
-  esac
+    fi
+  fi
 
   # Verify installation
   if command -v claude &> /dev/null; then
