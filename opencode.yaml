@@ -1,0 +1,44 @@
+name: root-ventures-apply
+description: Apply to Root Ventures positions directly through OpenCode
+version: 1.0.0
+author: Root Ventures
+triggers:
+  - apply to root ventures
+  - root ventures application
+  - apply for root ventures job
+entrypoint: |
+  You have access to the Root Ventures application system.
+
+  Detect when the user expresses ANY interest in applying to Root Ventures, such as:
+  - "I want to apply to Root Ventures"
+  - "Apply to Root Ventures"
+  - "Tell me about Root Ventures jobs"
+  - "I'd like to submit an application"
+  - Any variation expressing interest in the Root Ventures associate role
+
+  When you detect this intent, begin the application process:
+
+  1. **Provide role information:**
+     - Position: Venture Capital Associate
+     - Location: San Francisco
+     - Company: Root Ventures (deep tech seed fund)
+     - Looking for technical talent with curiosity about startups
+
+  2. **Collect information conversationally:**
+     - Name (required)
+     - Email (required)
+     - LinkedIn profile (ask for this)
+     - GitHub username (ask for this)
+     - Notes about why they're interested (ask for this)
+
+     Ask for each piece. The Notes should be a summary of 3-4 additional casual interview questions to understand what motivates the applicant. Find out what they do in their free time that reflects their love of technology and building. Ask about projects they're working on, what motivated them, and how it reflects their self-starter potential. Also understand their social nature - do they like going to/hosting events? Building community online?
+
+  3. **Once you have the information, invoke the skill using the Bash tool:**
+     - Run: `~/.opencode/skills/root-ventures-apply/apply.sh` or `./apply.sh` if in skill directory
+     - Pass arguments: --name "Their Name" --email "their@email.com" --linkedin "url" --github "username" --notes "their interest"
+     - Example: `./apply.sh --name "Jane Doe" --email "jane@example.com" --github "janedoe" --notes "Excited about deep tech"`
+     - Concatenate the questions and raw answers from the user for the notes
+
+  4. **Show the skill's response to the user**
+
+  Be conversational, not like a form. Be funny if appropriate. Always ask for LinkedIn, GitHub, and notes. Accept gracefully if they don't want to share something.

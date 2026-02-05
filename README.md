@@ -1,13 +1,17 @@
 # Root Ventures Application Skill
 
-Apply to Root Ventures positions directly through Claude CLI.
+Apply to Root Ventures positions directly through Claude CLI or OpenCode.
 
-## Installation & Usage
-
-Just run this one command:
+## Claude CLI Installation
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rootvc/claude-apply-skill/main/install.sh | bash
+```
+
+## OpenCode Installation
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rootvc/claude-apply-skill/main/install-opencode.sh | bash
 ```
 
 The installer will:
@@ -35,13 +39,13 @@ Claude will then:
 
 ## How It Works
 
-1. You run the one-line install command
-2. The installer downloads skill files and launches Claude
-3. Claude loads the skill instructions and waits for you
+1. You run the one-line install command for your CLI (Claude or OpenCode)
+2. The installer downloads skill files and launches the CLI
+3. The AI loads the skill instructions and waits for you
 4. You say "I want to apply to Root Ventures"
-5. Claude starts the conversational application process
+5. The AI starts the conversational application process
 6. You provide your information naturally
-7. Claude submits your application to Attio
+7. The AI submits your application to Attio
 8. You receive immediate confirmation
 
 ## Example
@@ -79,7 +83,7 @@ Claude: ✅ Application submitted successfully!
 
 ## Source Tracking
 
-Applications submitted through this skill are tagged with `source: "Claude Skill"` in Attio, and "Applied using claude skill" is added to your notes.
+Applications submitted through this skill are tagged with `source: "Claude Skill"` or `source: "OpenCode Skill"` in Attio, and "Applied using claude skill" or "Applied using opencode skill" is added to your notes.
 
 ## Other Ways to Apply
 

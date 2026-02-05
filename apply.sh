@@ -2,8 +2,15 @@
 
 # Root Ventures Job Application Skill
 # Collects applicant information and submits to Attio
+# Works with both Claude CLI and OpenCode
 
 ATTIO_WEBHOOK="https://hooks.attio.com/w/1d456d59-a7ac-4211-ac1d-fac612f7f491/5fc14931-0124-4121-b281-1dbfb64dceb2"
+
+# Detect which CLI is being used
+SOURCE="Claude Skill"
+if [[ "$0" == *".opencode"* ]] || [[ "${OPENCODE_SESSION:-}" == "1" ]]; then
+  SOURCE="OpenCode Skill"
+fi
 
 echo "# Root Ventures Application"
 echo ""
@@ -79,9 +86,9 @@ fi
 if [[ -n "$NOTES" ]]; then
   NOTES="$NOTES
 
-Applied using claude skill"
+Applied using ${SOURCE,,}"
 else
-  NOTES="Applied using claude skill"
+  NOTES="Applied using ${SOURCE,,}"
 fi
 
 # Build JSON payload using jq to properly escape values
@@ -91,6 +98,7 @@ JSON_PAYLOAD=$(jq -n \
   --arg linkedin "$LINKEDIN" \
   --arg github "$GITHUB" \
   --arg notes "$NOTES" \
+  --arg source "$SOURCE" \
   '{
     name: $name,
     email: $email,
@@ -98,7 +106,7 @@ JSON_PAYLOAD=$(jq -n \
     github: $github,
     notes: $notes,
     position: "Venture Capital Associate",
-    source: "Claude Skill"
+    source: $source
   }'
 )
 
@@ -122,7 +130,7 @@ if [[ "$HTTP_CODE" == "202" ]] || [[ "$HTTP_CODE" == "200" ]]; then
   echo "• If there's a good fit, someone will reach out to schedule a conversation"
   echo "• In the meantime, check out our portfolio at https://root.vc"
   echo ""
-  echo "🚀 Applied via Claude Skill - extra points for technical creativity!"
+  echo "🚀 Applied via $SOURCE - extra points for technical creativity!"
   exit 0
 else
   echo "❌ **Error submitting application**"

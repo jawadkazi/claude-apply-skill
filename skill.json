@@ -1,7 +1,7 @@
 {
   "name": "root-ventures-apply",
   "version": "1.0.0",
-  "description": "Apply to Root Ventures positions directly through Claude",
+  "description": "Apply to Root Ventures positions directly through Claude or OpenCode",
   "entrypoint": "apply.sh",
   "author": "Root Ventures",
   "triggers": [
