@@ -1,6 +1,6 @@
 # Root Ventures Application Skill
 
-Apply to Root Ventures positions directly through Claude CLI or OpenCode.
+A fork of the Root Ventures application, integrated OpenCode so people can fill the application for free.
 
 ## Claude CLI Installation
 
